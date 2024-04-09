@@ -11,6 +11,12 @@ const html = `
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   ${embedChobitsu()}
+  <style>
+    h1 {
+      color: #333;
+      font-size: 32px;
+    }
+  </style>
 </head>
 <body>
   <h1>Hello World</h1>
