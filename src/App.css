@@ -1,0 +1,12 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+iframe {
+  border: none;
+}
+
+* {
+  box-sizing: border-box;
+}
