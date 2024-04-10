@@ -30,11 +30,14 @@ export function EmbedDevTools({
   return (
     <PanelGroup direction={direction}>
       <Panel>
-        <iframe key={key} ref={previewRef} onLoad={handleLoad} {...props} />
+        <iframe
+          key={key + (props.src ?? "") + (props.srcDoc ?? "")}
+          ref={previewRef}
+          onLoad={handleLoad}
+          {...props}
+        />
       </Panel>
-      <PanelResizeHandle
-        {...resizableProps}
-      />
+      <PanelResizeHandle {...resizableProps} />
       <Panel>
         {devtoolsReady && (
           <DevTools key={key} ref={devtoolsIframeRef} {...devToolsProps} />
