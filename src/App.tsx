@@ -1,5 +1,6 @@
 import "./App.css";
-import { Preview } from "./components/Preview";
+import React from "react";
+import { EmbedDevTools } from "./components/EmbedDevTools";
 import { embedChobitsu } from "./hooks/use-devtools";
 
 const html = `
@@ -26,11 +27,19 @@ const html = `
 `;
 
 function App() {
-	return (
-		<>
-			<Preview srcDoc={html} style={{ width: "100%", height: "100%" }} />
-		</>
-	);
+  return (
+    <EmbedDevTools
+      direction="vertical"
+      srcDoc={html}
+      style={{ width: "100%", height: "100%" }}
+      resizableProps={{
+        style: { background: "rgba(0, 0, 0, 0.1)", height: "10px" },
+      }}
+      devToolsProps={{
+        style: { width: "100%", height: "100%" },
+      }}
+    />
+  );
 }
 
 export default App;

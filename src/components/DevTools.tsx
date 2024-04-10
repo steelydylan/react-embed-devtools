@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { useDevtools } from "../hooks/use-devtools";
 
 type Props = React.HTMLProps<HTMLIFrameElement>;

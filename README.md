@@ -1,30 +1,59 @@
-# React + TypeScript + Vite
+# ReactEmbedDevTools
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ReactEmbedDevTools is a library that allows you to inspect inside an iframe with the embedded DevTools
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+npm install react-embed-devtools
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Usage
+
+You should embed the `embedChobitsu` function in the head tag of the html you want to inspect.
+
+```jsx
+import React from 'react';
+import { EmbedDevTools, embedChobitsu } from 'react-embed-devtools';
+
+const html = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  ${embedChobitsu()}
+  <style>
+    h1 {
+      color: #333;
+      font-size: 32px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello World</h1>
+  <script>console.log('Hello World')</script>
+</body>
+</html>
+`;
+
+function App() {
+	return (
+		<>
+			<EmbedDevTools 
+        direction="vertical"
+        srcDoc={html} 
+        style={{ width: "100%", height: "100%" }} 
+        resizableProps={{
+          style: { background: "rgba(0, 0, 0, 0.1)", height: "10px" }
+        }}
+        devToolsProps={{
+          style: { width: "100%", height: "100%" }
+        }}
+      />
+		</>
+	);
+}
+```

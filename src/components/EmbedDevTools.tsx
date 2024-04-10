@@ -1,11 +1,20 @@
-import { useRef, useState } from "react";
+import React, { type ComponentProps, useRef, useState } from "react";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { useDevToolsMessage } from "../hooks/use-devtools-message";
 import { DevTools } from "./DevTools";
 
-type Props = React.HTMLProps<HTMLIFrameElement>;
+type Props = React.HTMLProps<HTMLIFrameElement> & {
+  direction?: "vertical" | "horizontal";
+  devToolsProps?: React.HTMLProps<HTMLIFrameElement>;
+  resizableProps?: ComponentProps<typeof PanelResizeHandle>;
+};
 
-export function Preview(props: Props) {
+export function EmbedDevTools({
+  direction = "vertical",
+  devToolsProps = {},
+  resizableProps = {},
+  ...props
+}: Props) {
   const [devtoolsReady, setDevtoolsReady] = useState(false);
   const [key, setKey] = useState(0);
   const previewRef = useRef<HTMLIFrameElement>(null);
@@ -19,18 +28,16 @@ export function Preview(props: Props) {
   });
 
   return (
-    <PanelGroup direction="vertical">
+    <PanelGroup direction={direction}>
       <Panel>
         <iframe key={key} ref={previewRef} onLoad={handleLoad} {...props} />
       </Panel>
-      <PanelResizeHandle style={{ height: "5px", backgroundColor: "#efefef" }} />
+      <PanelResizeHandle
+        {...resizableProps}
+      />
       <Panel>
         {devtoolsReady && (
-          <DevTools
-            key={key}
-            ref={devtoolsIframeRef}
-            style={{ width: "100%", height: "100%" }}
-          />
+          <DevTools key={key} ref={devtoolsIframeRef} {...devToolsProps} />
         )}
       </Panel>
     </PanelGroup>
