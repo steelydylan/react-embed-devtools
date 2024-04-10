@@ -17,8 +17,8 @@ npm install react-embed-devtools
 You should embed the `embedChobitsu` function in the head tag of the html you want to inspect.
 
 ```jsx
-import React from 'react';
-import { EmbedDevTools, embedChobitsu } from 'react-embed-devtools';
+import React from "react";
+import { EmbedDevTools, embedChobitsu } from "react-embed-devtools";
 
 const html = `
 <!DOCTYPE html>
@@ -44,20 +44,20 @@ const html = `
 `;
 
 function App() {
-	return (
-		<>
-			<EmbedDevTools 
+  return (
+    <>
+      <EmbedDevTools
         direction="vertical"
-        srcDoc={html} 
-        style={{ width: "100%", height: "100%" }} 
+        srcDoc={html}
+        style={{ width: "100%", height: "100%" }}
         resizableProps={{
-          style: { background: "rgba(0, 0, 0, 0.1)", height: "10px" }
+          style: { background: "rgba(0, 0, 0, 0.1)", height: "10px" },
         }}
         devToolsProps={{
-          style: { width: "100%", height: "100%" }
+          style: { width: "100%", height: "100%" },
         }}
       />
-		</>
-	);
+    </>
+  );
 }
 ```
