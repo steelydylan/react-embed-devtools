@@ -2,6 +2,8 @@
 
 ReactEmbedDevTools is a library that allows you to inspect inside an iframe with the embedded DevTools
 
+<div><video controls src="https://video.twimg.com/ext_tw_video/1775367594960355328/pu/vid/avc1/1152x720/CfFLP3w8uzGJIjaH.mp4?tag=12" muted="false"></video></div>
+
 ## Demo
 
 [https://react-embed-devtools.vercel.app/](https://react-embed-devtools.vercel.app/)
