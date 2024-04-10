@@ -40,7 +40,11 @@ export function EmbedDevTools({
       <PanelResizeHandle {...resizableProps} />
       <Panel>
         {devtoolsReady && (
-          <DevTools key={key} ref={devtoolsIframeRef} {...devToolsProps} />
+          <DevTools
+            key={key + (props.src ?? "") + (props.srcDoc ?? "")}
+            ref={devtoolsIframeRef}
+            {...devToolsProps}
+          />
         )}
       </Panel>
     </PanelGroup>
