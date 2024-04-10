@@ -45,19 +45,17 @@ const html = `
 
 function App() {
   return (
-    <>
-      <EmbedDevTools
-        direction="vertical"
-        srcDoc={html}
-        style={{ width: "100%", height: "100%" }}
-        resizableProps={{
-          style: { background: "rgba(0, 0, 0, 0.1)", height: "10px" },
-        }}
-        devToolsProps={{
-          style: { width: "100%", height: "100%" },
-        }}
-      />
-    </>
+    <EmbedDevTools
+      direction="vertical"
+      srcDoc={html}
+      style={{ width: "100%", height: "100%" }}
+      resizableProps={{
+        style: { background: "rgba(0, 0, 0, 0.1)", height: "10px" },
+      }}
+      devToolsProps={{
+        style: { width: "100%", height: "100%" },
+      }}
+    />
   );
 }
 ```
