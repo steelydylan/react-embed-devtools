@@ -4,6 +4,8 @@ ReactEmbedDevTools is a library that allows you to inspect inside an iframe with
 
 <div><video controls src="https://github.com/steelydylan/react-embed-devtools/assets/2508691/9da803a2-973f-4514-994b-99094f9511f2" muted="false"></video></div>
 
+This library is used for programing learning platform [https://mosya.dev](https://mosya.dev)
+
 ## Demo
 
 [https://react-embed-devtools.vercel.app/](https://react-embed-devtools.vercel.app/)
